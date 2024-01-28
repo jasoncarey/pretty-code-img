@@ -83,7 +83,7 @@ function CodeEditor({
         <AceEditor
           value="function() { return 'Hello World'; }"
           name="code-editor"
-          theme="monokai"
+          theme={theme}
           mode={language}
           fontSize={16}
           wrapEnabled={true}

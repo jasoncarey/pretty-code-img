@@ -1,0 +1,5 @@
+- increase top-left mac button spacing
+- more themes (catppuccin)
+- more backgrounds
+- light/dark mode toggle
+- move reused components into utils (chevron down etc)
