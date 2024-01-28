@@ -41,7 +41,7 @@ function CodeEditor({
   // @ts-ignore
   const handleResize = (event, direction, ref, pos) => {
     const newHeight = ref.style.height;
-    setHeight(parseInt(newHeight));
+    setHeight(parseInt(newHeight, 10));
   };
 
   const updateSize = () => {
@@ -62,10 +62,11 @@ function CodeEditor({
       defaultSize={{ width: width, height: height || 500 }}
       onResize={handleResize}
       className="resizable-container relative"
+      style={{ background: background }}
     >
-      <div className="code-block">
+      <div className="code-block" style={{ padding: currentPadding }}>
         <div className="code-title h-[52px] px-4 flex items-center justify-between bg-black bg-opacity-80">
-          <div className="dots flex items-center gap-1">
+          <div className="dots flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-[#ff5656]"></div>
             <div className="w-3 h-3 rounded-full bg-[#ffbc6a]"></div>
             <div className="w-3 h-3 rounded-full bg-[#67f772]"></div>
@@ -87,6 +88,7 @@ function CodeEditor({
           mode={language}
           fontSize={16}
           wrapEnabled={true}
+          height={`calc(${height}px - 2*${currentPadding} - 52px)`}
           showPrintMargin={false}
           highlightActiveLine={false}
           className="ace-editor-container"

@@ -1,7 +1,9 @@
 "use client";
 import { themes } from "@/utils/utils";
+import { on } from "events";
 import { ChevronDown } from "lucide-react";
 import React from "react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 interface ThemeSelectorProps {
   theme: string;
@@ -19,27 +21,29 @@ function ThemeSelector({ theme, setTheme }: ThemeSelectorProps) {
   };
 
   return (
-    <div className="theme-selector" onClick={toggleDropdown}>
-      <p className="py-[5px] text-sm font-medium">Theme</p>
-      <div className="dropdown-title capitalize w-[120px]">
-        {theme} <ChevronDown />
-      </div>
-      {showDropdown && (
-        <div className="dropdown-menu relative top-[94px] w-[120px]">
-          {themes.map((theme, i) => {
-            return (
-              <button
-                key={i}
-                onClick={() => handleThemeChange(theme)}
-                className="capitalize text-left"
-              >
-                {theme}
-              </button>
-            );
-          })}
+    <OutsideClickHandler onOutsideClick={() => setShowDropdown(false)}>
+      <div className="theme-selector" onClick={toggleDropdown}>
+        <p className="py-[5px] text-sm font-medium">Theme</p>
+        <div className="dropdown-title capitalize w-[120px]">
+          {theme} <ChevronDown />
         </div>
-      )}
-    </div>
+        {showDropdown && (
+          <div className="dropdown-menu relative top-[94px] w-[120px]">
+            {themes.map((theme, i) => {
+              return (
+                <button
+                  key={i}
+                  onClick={() => handleThemeChange(theme)}
+                  className="capitalize text-left"
+                >
+                  {theme}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </OutsideClickHandler>
   );
 }
 

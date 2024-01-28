@@ -2,6 +2,7 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
 import { languages } from "@/utils/utils";
+import OutsideClickHandler from "react-outside-click-handler";
 
 interface LanguageSelectorProps {
   language: string;
@@ -30,29 +31,31 @@ function LanguageSelector({
   };
 
   return (
-    <div onClick={toggleDropdown}>
-      <p className="py-[5px] text-sm font-medium">Language</p>
-      <div className="dropdown-title capitalize w-[120px] top-[94px]">
-        {language}
-        <ChevronDown />
-      </div>
-      {showDropdown && (
-        <div className="dropdown-menu w-[120px]">
-          {languages.map((lang, idx) => {
-            return (
-              <div key={idx}>
-                <button
-                  className="dropdown-item capitalize text-left"
-                  onClick={() => handleLanguageChange(lang.name)}
-                >
-                  {lang.name}
-                </button>
-              </div>
-            );
-          })}
+    <OutsideClickHandler onOutsideClick={() => setShowDropdown(false)}>
+      <div onClick={toggleDropdown}>
+        <p className="py-[5px] text-sm font-medium">Language</p>
+        <div className="dropdown-title capitalize w-[120px] top-[94px]">
+          {language}
+          <ChevronDown />
         </div>
-      )}
-    </div>
+        {showDropdown && (
+          <div className="dropdown-menu w-[120px]">
+            {languages.map((lang, idx) => {
+              return (
+                <div key={idx}>
+                  <button
+                    className="dropdown-item capitalize text-left"
+                    onClick={() => handleLanguageChange(lang.name)}
+                  >
+                    {lang.name}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </OutsideClickHandler>
   );
 }
 
