@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "eslint-plugin-react": "^7.33.2",
+    "html2canvas": "^1.4.1",
     "lucide-react": "^0.303.0",
     "next": "14.0.4",
+    "prettier": "^3.2.4",
     "re-resizable": "^6.9.11",
     "react": "^18",
     "react-ace": "^10.1.0",
