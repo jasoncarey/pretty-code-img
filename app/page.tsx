@@ -23,9 +23,18 @@ export default function Home() {
   const editorRef = useRef(null);
 
   const exportPng = async () => {
-    console.log('click logged');
     const editorElem = editorRef.current;
+
     if (editorElem) {
+      const handleElements = document.querySelectorAll('.handle') as any;
+      const cursorElement = document.querySelector('.ace_cursor') as any;
+
+      handleElements.forEach((elem: any) => {
+        elem.style.display = 'none';
+      });
+
+      cursorElement.style.display = 'none';
+
       const canvas = await html2canvas(editorElem);
       const image = canvas
         .toDataURL('image/png')
@@ -35,7 +44,12 @@ export default function Home() {
       link.download = 'code.png';
       link.href = image;
       link.click();
-      console.log('exported');
+
+      handleElements.forEach((elem: any) => {
+        elem.style.display = 'block';
+      });
+
+      cursorElement.style.display = 'block';
     }
   };
 
