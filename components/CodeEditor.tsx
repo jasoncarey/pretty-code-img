@@ -13,9 +13,12 @@ import 'ace-builds/src-noconflict/mode-typescript';
 import 'ace-builds/src-noconflict/mode-markdown';
 
 import 'ace-builds/src-noconflict/theme-monokai';
-import 'ace-builds/src-noconflict/theme-github';
+import 'ace-builds/src-noconflict/theme-github_dark';
 import 'ace-builds/src-noconflict/theme-terminal';
 import 'ace-builds/src-noconflict/theme-twilight';
+import 'ace-builds/src-noconflict/theme-dracula';
+import 'ace-builds/src-noconflict/theme-tomorrow_night';
+import 'ace-builds/src-noconflict/theme-one_dark';
 import { initialCode, languages } from '@/utils/utils';
 
 interface CodeEditorProps {

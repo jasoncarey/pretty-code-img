@@ -9,7 +9,15 @@ export const languages = [
   { name: 'Markdown', icon: 'icons/markdown.svg' },
 ];
 
-export const themes = ['monokai', 'twilight', 'terminal'];
+export const themes = [
+  'monokai',
+  'twilight',
+  'terminal',
+  'github_dark',
+  'dracula',
+  'tomorrow_night',
+  'one_dark',
+];
 
 export const backgrounds = [
   'linear-gradient(354deg, #ff75b5, #ffb86c)',
